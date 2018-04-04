@@ -27,8 +27,8 @@ This chart will do the following:
 
 This chart uses the following resources by default:
 
-- 0.5 CPU core
-- 0.5 Gi memory
+- 1 CPU core
+- 1 Gi memory
 - 2 Gi persistent volume.
 
 See the [configuration](#configuration) section for how to configure these values.
