@@ -1,8 +1,8 @@
-{{ if and .Values.persistence.enabled (not .Values.dataVolume.existingClaimName) -}}
+{{ if and .Values.persistence.enabled (not .Values.dataVolume.existingClaimName) (not .Values.hadr.enabled) -}}
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: {{ template "fullname" . }}-{{ .Values.dataVolume.name }}
+  name: {{ template "datastorname" . }}
   labels:
     app: {{ template "fullname" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
