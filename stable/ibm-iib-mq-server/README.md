@@ -1,8 +1,14 @@
-# IBM MQ Advanced for Developers
+# IBM Integration Bus with IBM MQ Advanced for Developers
+
+![IIB Logo](https://ot4i.github.com/iib-helm/ibm-integration-bus-dev/IBM_Integration_Bus_Icon.svg)
+
+IBM® Integration Bus is a market-leading lightweight enterprise integration engine that offers a fast, simple way for systems and applications to communicate with each other. As a result, it can help you achieve business value, reduce IT complexity and save money. IBM Integration Bus supports a range of integration choices, skills and interfaces to optimize the value of existing technology investments. 
+
+IBM® MQ, formerly WebSphere MQ, is messaging middleware that simplifies and accelerates the integration of diverse applications and data across multiple platforms. It uses message queues to exchange information and offers a single messaging solution for cloud, on premise, mobile and IoT environments. By connecting virtually everything, from a simple pair of applications to the most complex business environments, it improves responsiveness, controls costs, reduces risk and provides real-time insight from data. It is available in a standard edition, an advanced edition, as an appliance and in a z/OS version.
 
 ## Introduction
 
-This chart deploys a single IBM® MQ Advanced for Developers server (Queue Manager).  IBM MQ is messaging middleware that simplifies and accelerates the integration of diverse applications and business data across multiple platforms.  It uses message queues to facilitate the exchanges of information and offers a single messaging solution for cloud, mobile, Internet of Things (IoT) and on-premises environments.
+This chart deploys a single IBM Integration Bus for Developers integration node, containing a single integration server and a single IBM® MQ Advanced for Developers server (Queue Manager). 
 
 ## Chart Details
 
@@ -32,10 +38,10 @@ See the [configuration](#configuration) section for how to configure these value
 You can install the chart with the release name `foo` as follows:
 
 ```sh
-helm install --name foo stable/ibm-mqadvanced-server-dev --set license=accept
+helm install --name foo stable/ibm-iib-mq-server --set license=accept
 ```
 
-This command accepts the [IBM MQ Advanced for Developers license](LICENSES/LICENSE_ILAN) and deploys an MQ Advanced for Developers server on the Kubernetes cluster. The [configuration](#configuration) section lists the parameters that can be configured during installation.
+This command accepts the [IBM Integration Bus for Developers license](LICENSE) and [IBM MQ Advanced for Developers license](LICENSES/LICENSE_ILAN) and deploys an IBM Integration Bus for Developers server and MQ Advanced for Developers server on the Kubernetes cluster.
 
 > **Tip**: See all the resources deployed by the chart using `kubectl get all -l release=foo`
 
