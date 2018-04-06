@@ -35,12 +35,11 @@ See the [configuration](#configuration) section for how to configure these value
 
 ## Installing the Chart
 
-> **Caution**: At 6th April 2018, you will need to build your own Docker image from the repository at https://github.com/ot4i/iib-docker:
+> **Caution**: As at 6th April 2018, you will need to build your own Docker image from the repository at https://github.com/ot4i/iib-docker:
 ```sh
-helm install --name foo stable/ibm-iib-mq-server --set license=accept
-```
 cd 10.0.0.11/iib-mq-server
 docker build -t iib-mq-image .
+```
 
 You can install the chart with the release name `foo` as follows:
 
@@ -87,10 +86,11 @@ The following table lists the configurable parameters of the `ibm-mqadvanced-ser
 | `resources.limits.memory`       | Kubernetes memory limit for the Queue Manager container | `512Mi`                                              |
 | `resources.requests.cpu`        | Kubernetes CPU request for the Queue Manager container | `500m`                                                 |
 | `resources.requests.memory`     | Kubernetes memory request for the Queue Manager container | `512Mi`                                            |
-| `queueManager.name`              | MQ Queue Manager name                           | Helm release name                                          |
-| `queueManager.dev.adminPassword` | Developer defaults - administrator password     | Random generated string.  See the notes that appear when you install for how to retrieve this.                            |
-| `queueManager.dev.appPassword`   | Developer defaults - app password   | `nil` (no password required to connect an MQ client)  
-                |
+| `queueManager.name`             | MQ Queue Manager name                           | Helm release name                                          |
+| `queueManager.dev.adminPassword`| Developer defaults - administrator password     | Random generated string.  See the notes that appear when you install for how to retrieve this.                            
+|
+| `queueManager.dev.appPassword`  | Developer defaults - app password   | `nil` (no password required to connect an MQ client)  
+|
 | `nameOverride`                  | Set to partially override the resource names used in this chart | `ibm-mq`                                   |
 | `livenessProbe.initialDelaySeconds` | The initial delay before starting the liveness probe. Useful for slower systems that take longer to start the Queue Manager. | 60 |
 | `livenessProbe.periodSeconds` | How often to run the probe | 10 |
