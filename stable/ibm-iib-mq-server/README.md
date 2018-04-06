@@ -35,6 +35,13 @@ See the [configuration](#configuration) section for how to configure these value
 
 ## Installing the Chart
 
+> **Caution**: At 6th April 2018, you will need to build your own Docker image from the repository at https://github.com/ot4i/iib-docker:
+```sh
+helm install --name foo stable/ibm-iib-mq-server --set license=accept
+```
+cd 10.0.0.11/iib-mq-server
+docker build -t iib-mq-image .
+
 You can install the chart with the release name `foo` as follows:
 
 ```sh
