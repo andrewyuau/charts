@@ -71,8 +71,8 @@ The following table lists the configurable parameters of the `ibm-mqadvanced-ser
 | Parameter                       | Description                                                     | Default                                    |
 | ------------------------------- | --------------------------------------------------------------- | ------------------------------------------ |
 | `license`                       | Set to `accept` to accept the terms of the IBM license          | `"not accepted"`                           |
-| `image.repository`              | Image full name including repository                            | `ibmcom/mq`                |
-| `image.tag`                     | Image tag                                                       | `9`         |
+| `image.repository`              | Image full name including repository                            | `ibmcom/iib-mq-server`                |
+| `image.tag`                     | Image tag                                                       | `latest`         |
 | `image.pullPolicy`              | Image pull policy                                               | `IfNotPresent`                             |
 | `image.pullSecret`              | Image pull secret, if you are using a private Docker registry   | `nil`                                      |
 | `persistence.enabled`           | Use persistent volumes for all defined volumes                  | `true`                                     |
@@ -82,10 +82,12 @@ The following table lists the configurable parameters of the `ibm-mqadvanced-ser
 | `dataPVC.size`                  | Size of volume for main MQ data (under `/var/mqm`)              | `2Gi`                                      |
 | `service.name`                  | Name of the Kubernetes service to create                        | `"qmgr"`                                   |
 | `service.type`                  | Kubernetes service type exposing ports, e.g. `NodePort`         | `ClusterIP`                                |
-| `resources.limits.cpu`          | Kubernetes CPU limit for the Queue Manager container | `500m`                                                   |
-| `resources.limits.memory`       | Kubernetes memory limit for the Queue Manager container | `512Mi`                                              |
-| `resources.requests.cpu`        | Kubernetes CPU request for the Queue Manager container | `500m`                                                 |
-| `resources.requests.memory`     | Kubernetes memory request for the Queue Manager container | `512Mi`                                            |
+| `resources.limits.cpu`          | Kubernetes CPU limit for the IIB and Queue Manager container | `2`                                                   |
+| `resources.limits.memory`       | Kubernetes memory limit for the IIB and Queue Manager container | `2048Mi`                                              |
+| `resources.requests.cpu`        | Kubernetes CPU request for the IIB and Queue Manager container | `1`                                                 |
+| `resources.requests.memory`     | Kubernetes memory request for IIB and the Queue Manager container | `1024Mi`                                            |
+| `nodename`              | IBM Integration Bus integration node name                           | `IIB_NODE`                                        |
+| `servername`              | IBM Integration Bus integration server name                           | `IIB_SERVER`                               |
 | `queueManager.name`             | MQ Queue Manager name                           | Helm release name                                          |
 | `queueManager.dev.adminPassword`| Developer defaults - administrator password     | Random generated string.  See the notes that appear when you install for how to retrieve this.|
 | `queueManager.dev.appPassword`  | Developer defaults - app password   | `nil` (no password required to connect an MQ client) |
