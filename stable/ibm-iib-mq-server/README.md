@@ -66,7 +66,7 @@ kubectl delete pvc -l release=foo
 ```
 
 ## Configuration
-The following table lists the configurable parameters of the `ibm-mqadvanced-server-dev` chart and their default values.
+The following table lists the configurable parameters of the `ibm-iib-mq-server` chart and their default values.
 
 | Parameter                       | Description                                                     | Default                                    |
 | ------------------------------- | --------------------------------------------------------------- | ------------------------------------------ |
@@ -86,12 +86,12 @@ The following table lists the configurable parameters of the `ibm-mqadvanced-ser
 | `resources.limits.memory`       | Kubernetes memory limit for the IIB and Queue Manager container | `2048Mi`                                              |
 | `resources.requests.cpu`        | Kubernetes CPU request for the IIB and Queue Manager container | `1`                                                 |
 | `resources.requests.memory`     | Kubernetes memory request for IIB and the Queue Manager container | `1024Mi`                                            |
-| `nodename`              | IBM Integration Bus integration node name                           | `IIB_NODE`                                        |
-| `servername`              | IBM Integration Bus integration server name                           | `IIB_SERVER`                               |
+| `iib.iibnodename`              | IBM Integration Bus integration node name                           | `iibnode1`                                        |
+| `iib.iibservername`              | IBM Integration Bus integration server name                           | `default`                               |
 | `queueManager.name`             | MQ Queue Manager name                           | Helm release name                                          |
 | `queueManager.dev.adminPassword`| Developer defaults - administrator password     | Random generated string.  See the notes that appear when you install for how to retrieve this.|
 | `queueManager.dev.appPassword`  | Developer defaults - app password   | `nil` (no password required to connect an MQ client) |
-| `nameOverride`                  | Set to partially override the resource names used in this chart | `ibm-mq`                                   |
+| `nameOverride`                  | Set to partially override the resource names used in this chart | `ibm-iib-mq-server`                                   |
 | `livenessProbe.initialDelaySeconds` | The initial delay before starting the liveness probe. Useful for slower systems that take longer to start the Queue Manager. | 60 |
 | `livenessProbe.periodSeconds` | How often to run the probe | 10 |
 | `livenessProbe.timeoutSeconds` | Number of seconds after which the probe times out | 5 |
