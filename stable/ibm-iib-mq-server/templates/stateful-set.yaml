@@ -58,7 +58,7 @@ spec:
               - key: beta.kubernetes.io/os
                 operator: In
                 values:
-                - linux                
+                - linux
       {{- if .Values.image.pullSecret }}
       imagePullSecrets:
         - name: {{ .Values.image.pullSecret }}
@@ -70,9 +70,16 @@ spec:
           ports:
           - containerPort: 1414
           - containerPort: 9443
+          - containerPort: 4414
+          - containerPort: 7080
+          - containerPort: 7800
           env:
           - name: LICENSE
             value: {{ .Values.license }}
+          - name: NODE_NAME
+            value: {{ .Values.iib.iibnodename }}
+          - name: IIBSERVERNAME
+            value: {{ .Values.iib.iibservername }}
           - name: MQ_QMGR_NAME
             value: {{ .Values.queueManager.name | default .Release.Name | replace "-" "" }}
           - name: LOG_FORMAT
@@ -94,24 +101,6 @@ spec:
           - mountPath: "/mnt/mqm"
             name: "{{ template "fullname" . }}-{{ .Values.dataPVC.name }}"
           {{- end }}
-          # Set liveness probe to determine if the queue manager is running
-          livenessProbe:
-            exec:
-              command:
-              - chkmqhealthy
-            initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
-            periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
-            timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
-            failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
-          # Set readiness probe to determine if the MQ listener is running
-          readinessProbe:
-            exec:
-              command:
-              - chkmqready
-            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
-            periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
-            timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
-            failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
           resources:
             limits:
 {{ toYaml .Values.resources.limits | indent 14 }}

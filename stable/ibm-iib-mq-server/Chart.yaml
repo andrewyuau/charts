@@ -13,8 +13,8 @@
 # limitations under the License.
 
 apiVersion: v1
-description: IBM MQ queue manager
-name: ibm-mqadvanced-server-dev
+description: IBM Integration Bus and MQ queue manager
+name: ibm-iib-mq-server
 version: 1.2.0
 icon: https://developer.ibm.com/messaging/wp-content/uploads/sites/18/2018/03/ibm_mq_32.png
 tillerVersion: ">=2.4.0"
